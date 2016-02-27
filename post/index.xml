@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Eric Rosenberg</title>
-    <link>http://www.yourdomain.com/post/</link>
+    <link>http://ehaydenr.github.io/post/</link>
     <description>Recent content in Posts on Eric Rosenberg</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 26 Feb 2016 17:18:47 -0600</lastBuildDate>
-    <atom:link href="http://www.yourdomain.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ehaydenr.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Intro to Ansible Playbook</title>
-      <link>http://www.yourdomain.com/2016/02/26/intro-to-ansible-playbook</link>
+      <link>http://ehaydenr.github.io/2016/02/26/intro-to-ansible-playbook</link>
       <pubDate>Fri, 26 Feb 2016 17:18:47 -0600</pubDate>
       
-      <guid>http://www.yourdomain.com/2016/02/26/intro-to-ansible-playbook</guid>
+      <guid>http://ehaydenr.github.io/2016/02/26/intro-to-ansible-playbook</guid>
       <description>
 
 &lt;p&gt;Image From: &lt;a href=&#34;https://www.digitalocean.com/community/tutorials/how-to-create-ansible-playbooks-to-automate-system-configuration-on-ubuntu&#34;&gt;DigitalOcean&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Before we get started, if you haven&amp;rsquo;t already, check out &lt;a href=&#34;http://www.yourdomain.com/2016/02/25/intro-to-ansible&#34;&gt;Intro to Ansible&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Before we get started, if you haven&amp;rsquo;t already, check out &lt;a href=&#34;http://ehaydenr.github.io/2016/02/25/intro-to-ansible&#34;&gt;Intro to Ansible&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h1 id=&#34;motivation:7cdcc31366b6fd56a03b23195d6488f2&#34;&gt;Motivation&lt;/h1&gt;
 
@@ -147,10 +147,10 @@
     
     <item>
       <title>Intro to Ansible</title>
-      <link>http://www.yourdomain.com/2016/02/25/intro-to-ansible</link>
+      <link>http://ehaydenr.github.io/2016/02/25/intro-to-ansible</link>
       <pubDate>Thu, 25 Feb 2016 17:32:58 -0600</pubDate>
       
-      <guid>http://www.yourdomain.com/2016/02/25/intro-to-ansible</guid>
+      <guid>http://ehaydenr.github.io/2016/02/25/intro-to-ansible</guid>
       <description>
 
 &lt;h1 id=&#34;motivation:9a0c5c802295a374fed89e0c79bc5395&#34;&gt;Motivation&lt;/h1&gt;
@@ -333,10 +333,10 @@ hello
     
     <item>
       <title>Getting Set Up With Hugo</title>
-      <link>http://www.yourdomain.com/2016/02/24/getting-set-up-with-hugo</link>
+      <link>http://ehaydenr.github.io/2016/02/24/getting-set-up-with-hugo</link>
       <pubDate>Wed, 24 Feb 2016 20:41:45 -0600</pubDate>
       
-      <guid>http://www.yourdomain.com/2016/02/24/getting-set-up-with-hugo</guid>
+      <guid>http://ehaydenr.github.io/2016/02/24/getting-set-up-with-hugo</guid>
       <description>
 
 &lt;h1 id=&#34;motivation:32ab7241d48fcc174c877413a917f8cf&#34;&gt;Motivation&lt;/h1&gt;
