@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on Eric Rosenberg</title>
+    <link>http://www.yourdomain.com/tags/hugo/</link>
+    <description>Recent content in Hugo on Eric Rosenberg</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 24 Feb 2016 20:41:45 -0600</lastBuildDate>
+    <atom:link href="http://www.yourdomain.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Getting Set Up With Hugo</title>
+      <link>http://www.yourdomain.com/2016/02/24/getting-set-up-with-hugo</link>
+      <pubDate>Wed, 24 Feb 2016 20:41:45 -0600</pubDate>
+      
+      <guid>http://www.yourdomain.com/2016/02/24/getting-set-up-with-hugo</guid>
+      <description>
+
+&lt;h1 id=&#34;motivation:32ab7241d48fcc174c877413a917f8cf&#34;&gt;Motivation&lt;/h1&gt;
+
+&lt;p&gt;There are certain instances where statically generating your website is a great idea. There are tools out there like &lt;a href=&#34;https://wordpress.org/&#34;&gt;WordPress&lt;/a&gt;, &lt;a href=&#34;https://www.drupal.org/&#34;&gt;Drupal&lt;/a&gt;, and &lt;a href=&#34;https://www.joomla.org/&#34;&gt;Joomla&lt;/a&gt; that provide much functionality that can be overkill. The difference between &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; and these Content Management Systems (CMS) is static vs. dynamic content delivery. While it does have its restrictions, static site delivery has some pretty great performance benefits. If the server doesn&amp;rsquo;t have to query a database and build the page, it will deliver the user content much quicker. The idea is that we do all the work in building the site once and deliver that product many times.&lt;/p&gt;
+
+&lt;h1 id=&#34;installation:32ab7241d48fcc174c877413a917f8cf&#34;&gt;Installation&lt;/h1&gt;
+
+&lt;p&gt;Installation steps are officially documented &lt;a href=&#34;https://gohugo.io/overview/installing/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Quickstart guide is located &lt;a href=&#34;https://gohugo.io/overview/quickstart/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;cheat-sheet:32ab7241d48fcc174c877413a917f8cf&#34;&gt;Cheat Sheet&lt;/h1&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Objective&lt;/th&gt;
+&lt;th&gt;Command&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Create new site&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;hugo new site path/to/site&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Create post&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;hugo new post/example.md&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Run server&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;hugo server&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Run server with theme&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;hugo server --theme=&amp;lt;theme name&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Run server and watch files for updates&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;hugo server -w&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&#34;notes:32ab7241d48fcc174c877413a917f8cf&#34;&gt;Notes&lt;/h1&gt;
+
+&lt;h2 id=&#34;get-all-themes:32ab7241d48fcc174c877413a917f8cf&#34;&gt;Get All Themes&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/spf13&#34;&gt;Steve Francia&lt;/a&gt;, the founder lof the Hugo project, maintains a repository of all hugo themes &lt;a href=&#34;https://github.com/spf13/hugoThemes&#34;&gt;here&lt;/a&gt;. You can conveniently download all the themes and add them to your poject.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd /path/to/project
+$ git clone --depth 1 --recursive https://github.com/spf13/hugoThemes.git themes
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

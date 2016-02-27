@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Orchestration on Eric Rosenberg</title>
+    <link>http://www.yourdomain.com/categories/orchestration/</link>
+    <description>Recent content in Orchestration on Eric Rosenberg</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 26 Feb 2016 17:18:47 -0600</lastBuildDate>
+    <atom:link href="http://www.yourdomain.com/categories/orchestration/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Intro to Ansible Playbook</title>
+      <link>http://www.yourdomain.com/2016/02/26/intro-to-ansible-playbook</link>
+      <pubDate>Fri, 26 Feb 2016 17:18:47 -0600</pubDate>
+      
+      <guid>http://www.yourdomain.com/2016/02/26/intro-to-ansible-playbook</guid>
+      <description>
+
+&lt;p&gt;Image From: &lt;a href=&#34;https://www.digitalocean.com/community/tutorials/how-to-create-ansible-playbooks-to-automate-system-configuration-on-ubuntu&#34;&gt;DigitalOcean&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Before we get started, if you haven&amp;rsquo;t already, check out &lt;a href=&#34;http://www.yourdomain.com/2016/02/25/intro-to-ansible&#34;&gt;Intro to Ansible&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;motivation:7cdcc31366b6fd56a03b23195d6488f2&#34;&gt;Motivation&lt;/h1&gt;
+
+&lt;p&gt;Inlining Ansible commands on the CLI is a pain. Also, what if we want to do a bunch of commands at once? Ansible&amp;rsquo;s solution is playbook.&lt;/p&gt;
+
+&lt;h1 id=&#34;welcome-to-the-world-of-playbooks:7cdcc31366b6fd56a03b23195d6488f2&#34;&gt;Welcome to the world of playbooks&lt;/h1&gt;
+
+&lt;p&gt;Playbook is essential to achieving a good administration workflow. If you&amp;rsquo;re inlining a lot on the command line, you&amp;rsquo;re doing too much work; let playbook do the work for you.&lt;/p&gt;
+
+&lt;h2 id=&#34;sample-play:7cdcc31366b6fd56a03b23195d6488f2&#34;&gt;Sample Play&lt;/h2&gt;
+
+&lt;p&gt;The &lt;em&gt;play&lt;/em&gt; is a set of &lt;em&gt;tasks&lt;/em&gt; and with configurations to run on your infrastructure. Let&amp;rsquo;s take a look.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;---
+- hosts: all
+  become: yes
+  become_user: root
+  tasks:
+    - name: add to sudoers
+      user: name=eric state=present groups=&amp;quot;sudo&amp;quot; append=yes
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Above is a play with only a single task. As we add more tasks, you&amp;rsquo;ll see the benefit of plays. There are a bunch of configurations you can add to your play. For example, &lt;code&gt;become&lt;/code&gt; tells ansible that you want to run the following tasks a different user. &lt;code&gt;become_user: root&lt;/code&gt; tells ansible we want to become the root user. If you&amp;rsquo;re curious, &lt;a href=&#34;http://docs.ansible.com/ansible/become.html&#34;&gt;become documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Under tasks, we have a list of size 1. The &lt;code&gt;name&lt;/code&gt; attribute simply gives the task a name. &lt;code&gt;user&lt;/code&gt; specifies that we are using the &lt;code&gt;user&lt;/code&gt; module. If we go look at the module &lt;a href=&#34;http://docs.ansible.com/ansible/user_module.html&#34;&gt;documentation&lt;/a&gt;, we see a number options we have.&lt;/p&gt;
+
+&lt;h3 id=&#34;wait-what-s-the-difference-between-a-play-and-a-playbook:7cdcc31366b6fd56a03b23195d6488f2&#34;&gt;Wait.. what&amp;rsquo;s the difference between a play and a playbook?&lt;/h3&gt;
+
+&lt;p&gt;In our Sample Play, you can see a playbook file. This playbook only consists of one play which consists of only one tasks. Essentially, plays are made up of tasks and playbooks are made up of plays. A playbook lives in one file.&lt;/p&gt;
+
+&lt;h2 id=&#34;another-play:7cdcc31366b6fd56a03b23195d6488f2&#34;&gt;Another Play&lt;/h2&gt;
+
+&lt;p&gt;Keeping packages up to date with Ansible is a great use case. Let&amp;rsquo;s see what the file looks like.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;___
+- hosts: all
+  become: yes
+  become_user: root
+  tasks:
+      - name: update package lists
+        apt: update_cache=yes
+
+      - name: upgrade packages
+        apt: upgrade=yes
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you want to see the specifics of &lt;code&gt;update-cache&lt;/code&gt; and &lt;code&gt;upgrade&lt;/code&gt; go check out the &lt;a href=&#34;http://docs.ansible.com/ansible/apt_module.html&#34;&gt;docs&lt;/a&gt;. You should be referring to them.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s run it!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ansible-playbook plays/my_play.yml -i hosts --ask-sudo-pass
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;using-variables-in-a-playbook:7cdcc31366b6fd56a03b23195d6488f2&#34;&gt;Using Variables in a Playbook&lt;/h2&gt;
+
+&lt;p&gt;What happens if we want to install a bunch of packages at the same time? Playbook variables allow us to use loop-like constructs inside our playbook. Let&amp;rsquo;s take a look.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;---
+- hosts: analyst
+  become: yes
+  become_user: root
+  vars_files:
+    - my_vars.json
+  tasks:
+      - name: install packages
+        apt: name={{item}} state=latest
+        with_items: packages
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Variables File - &lt;code&gt;my_vars.json&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+  &amp;quot;packages&amp;quot;: [
+    &amp;quot;texlive&amp;quot;,
+    &amp;quot;texstudio&amp;quot;,
+    &amp;quot;git&amp;quot;,
+    &amp;quot;python-pip&amp;quot;,
+    &amp;quot;xfce4&amp;quot;,
+    &amp;quot;iceweasel&amp;quot;,
+    &amp;quot;r-base&amp;quot;,
+    &amp;quot;r-base-dev&amp;quot;,
+    &amp;quot;xrdp&amp;quot;,
+    &amp;quot;smbclient&amp;quot;,
+    &amp;quot;zsh&amp;quot;,
+    &amp;quot;cifs-utils&amp;quot;
+  ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Using &lt;code&gt;with_items&lt;/code&gt; allows us to install all of these packages with just one task! &lt;code&gt;with_items&lt;/code&gt; is useful in many situations.&lt;/p&gt;
+
+&lt;h3 id=&#34;variables-on-cli:7cdcc31366b6fd56a03b23195d6488f2&#34;&gt;Variables on CLI&lt;/h3&gt;
+
+&lt;p&gt;In the example above, I specified variables through the &lt;code&gt;var_files:&lt;/code&gt; option. If we want to add variables at the time of running the command without having to rewrite a play, we can specify &lt;code&gt;--extra-vars=&amp;quot;@my_extra_vars.json&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;cheat-sheet:7cdcc31366b6fd56a03b23195d6488f2&#34;&gt;Cheat Sheet&lt;/h1&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Objective&lt;/th&gt;
+&lt;th&gt;Command&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Limit hosts affected&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;-l groupname&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Ask sudo password for Become&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;--ask-sudo-pass&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Extra vars&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;--extra-vars=&amp;quot;@my_extra_vars.json&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Intro to Ansible</title>
+      <link>http://www.yourdomain.com/2016/02/25/intro-to-ansible</link>
+      <pubDate>Thu, 25 Feb 2016 17:32:58 -0600</pubDate>
+      
+      <guid>http://www.yourdomain.com/2016/02/25/intro-to-ansible</guid>
+      <description>
+
+&lt;h1 id=&#34;motivation:9a0c5c802295a374fed89e0c79bc5395&#34;&gt;Motivation&lt;/h1&gt;
+
+&lt;p&gt;Managing a one or two machines is a fairly easy task. Installing software, managing users, mounting network drives, etc. can be done by manually spawning a shell to each machine and running whatever commands we need to on each machine individually. While it doesn&amp;rsquo;t seem too bad for a couple machines, what if we want to manage many machines? If I have to gather information about all 1000 of my machines, I don&amp;rsquo;t want to have to manually spawn a shell in each. This would be unrealistic.&lt;/p&gt;
+
+&lt;p&gt;Luckily, there are nice people out there that work on management and orchestration tools. Ansible is one such tool.&lt;/p&gt;
+
+&lt;h1 id=&#34;installation:9a0c5c802295a374fed89e0c79bc5395&#34;&gt;Installation&lt;/h1&gt;
+
+&lt;p&gt;The official install doc is &lt;a href=&#34;http://docs.ansible.com/ansible/intro_installation.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ brew install ansible
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;basics:9a0c5c802295a374fed89e0c79bc5395&#34;&gt;Basics&lt;/h1&gt;
+
+&lt;h2 id=&#34;creating-a-hosts-file:9a0c5c802295a374fed89e0c79bc5395&#34;&gt;Creating a hosts file&lt;/h2&gt;
+
+&lt;p&gt;The hosts file is where you put all the machines you are interested in working with. You need two things: group name and address. You can use IP addresses or use DNS. Here&amp;rsquo;s an example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[mygroupname]
+192.168.1.1
+192.168.1.2
+example.com
+
+[someothergroup]
+192.168.1.1
+some.other.machine.com
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Three machines are all associated with the &amp;ldquo;mygroupname&amp;rdquo; group. Two other machines are associated with &amp;ldquo;someothergroup&amp;rdquo; group.&lt;/p&gt;
+
+&lt;h2 id=&#34;how-to-we-setup-access-to-these-machines:9a0c5c802295a374fed89e0c79bc5395&#34;&gt;How to we setup access to these machines?&lt;/h2&gt;
+
+&lt;p&gt;We need to make sure a couple of things are in place before we can get started running commands. First, we need to have an account on each of the machines. If you&amp;rsquo;re setting things up for the first time, you might want to put an account with the same name on each machine you want access to. If you&amp;rsquo;re trying to connect to an existing system that doesn&amp;rsquo;t have an account on each machine, you&amp;rsquo;re going to have to get a little more involved with the settings. For example, you might have to ammend your hosts file like such.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[mygroupname]
+192.168.1.1 ansible_ssh_user=someuser ansible_ssh_private_key_file=/path/to/key.pem
+192.168.1.2 ansible_ssh_user=someotheruser ansible_ssh_pass=password
+example.com ansible_ssh_user=joe ansible_ssh_pass=password
+
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;What I like to do is setup my &lt;code&gt;~/.ssh/config&lt;/code&gt; like such:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Host *.domain.com
+  User admin
+  IdentityFile ~/.ssh/admin.pem
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If all my machines are subdomains of domain.com, whenever I ssh (and whenever ansible does) it will use the user &lt;code&gt;admin&lt;/code&gt; and the private key &lt;code&gt;~/.ssh/admin.pem&lt;/code&gt;. This way I don&amp;rsquo;t have to specify my username in my hosts file. Another great option is to use ansible group variables. You can learn about the hosts file (inventory file) and connecting to your machines &lt;a href=&#34;http://docs.ansible.com/ansible/intro_inventory.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;our-first-command:9a0c5c802295a374fed89e0c79bc5395&#34;&gt;Our first command&lt;/h2&gt;
+
+&lt;p&gt;Let&amp;rsquo;s run ansible with the command module to &lt;code&gt;echo hello&lt;/code&gt; on all of our machines.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ansible mygroupname -i hosts -m command -a &amp;quot;echo hello&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If all goes well, you should get something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;192.168.1.1 | SUCCESS | rc=0 &amp;gt;&amp;gt;
+hello
+
+192.168.1.2 | SUCCESS | rc=0 &amp;gt;&amp;gt;
+hello
+
+example.com | SUCCESS | rc=0 &amp;gt;&amp;gt;
+hello
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice in our command to ansible &lt;code&gt;mygroupname&lt;/code&gt; was the first argument. This argument tells ansible which group we wish to execute our ansible command on. If we instead did &lt;code&gt;ansible someothergroup ...&lt;/code&gt; it would run on the machines listed in the other group. If you want to run the command on all the groups, you specify &lt;code&gt;all&lt;/code&gt; as the group.&lt;/p&gt;
+
+&lt;h2 id=&#34;getting-the-uptime-of-each-machine:9a0c5c802295a374fed89e0c79bc5395&#34;&gt;Getting the uptime of each machine&lt;/h2&gt;
+
+&lt;p&gt;Here&amp;rsquo;s an example of a command that&amp;rsquo;s a little more useful&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ansible somegroup -i hosts -m command -a &amp;quot;uptime&amp;quot;
+
+192.168.1.1 | SUCCESS | rc=0 &amp;gt;&amp;gt;
+ 22:56:54 up 2 days, 21:28,  1 user,  load average: 0.03, 0.03, 0.05
+
+192.168.1.2 | SUCCESS | rc=0 &amp;gt;&amp;gt;
+ 22:56:54 up 2 days, 21:28,  1 user,  load average: 0.00, 0.01, 0.05
+
+192.168.1.3 | SUCCESS | rc=0 &amp;gt;&amp;gt;
+ 22:56:54 up 2 days, 21:28,  1 user,  load average: 0.00, 0.01, 0.05
+
+192.168.1.4 | SUCCESS | rc=0 &amp;gt;&amp;gt;
+ 22:56:54 up 2 days, 21:28,  1 user,  load average: 0.03, 0.03, 0.05
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;modules:9a0c5c802295a374fed89e0c79bc5395&#34;&gt;Modules&lt;/h2&gt;
+
+&lt;p&gt;Ansible has a ton of modules that are useful to common orchestration and management tasks. &lt;a href=&#34;http://docs.ansible.com/ansible/list_of_all_modules.html&#34;&gt;Here&lt;/a&gt; is a potentially intimidating list of them.&lt;/p&gt;
+
+&lt;p&gt;Modules are awesome. They are very powerful and aren&amp;rsquo;t going to be covered in this post. Modules can be used on the command line, but most examples of them will be within ansible plays. Another feature of ansible is &lt;em&gt;plays&lt;/em&gt;. Using ansible &lt;em&gt;plays&lt;/em&gt; within &lt;code&gt;anisble-playbook&lt;/code&gt; will be a topic for another post. The offical docs are &lt;a href=&#34;http://docs.ansible.com/ansible/playbooks.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here are some that I&amp;rsquo;ve found useful.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Module Name&lt;/th&gt;
+&lt;th&gt;Summary&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;http://docs.ansible.com/ansible/apt_key_module.html&#34;&gt;apt_key&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Add or remove apt key&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;http://docs.ansible.com/ansible/apt_repository_module.html&#34;&gt;apt_repository&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Add or remove apt repository&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;http://docs.ansible.com/ansible/apt_module.html&#34;&gt;apt&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Manage apt packages&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;http://docs.ansible.com/ansible/user_module.html&#34;&gt;user&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Manage user accounts&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;http://docs.ansible.com/ansible/authorized_key_module.html&#34;&gt;authorized_key&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Add or remove ssh keys for user accounts&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;http://docs.ansible.com/ansible/mount_module.html&#34;&gt;mount&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Control mount points&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;http://docs.ansible.com/ansible/file_module.html&#34;&gt;file&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Set attributes of files&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&#34;cheat-sheet:9a0c5c802295a374fed89e0c79bc5395&#34;&gt;Cheat Sheet&lt;/h1&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Objective&lt;/th&gt;
+&lt;th&gt;Command&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Uptime&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;ansible all -i hosts -m command -a &amp;quot;uptime&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Who&amp;rsquo;s logged in?&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;ansible all -i hosts -m command -a &amp;quot;who&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&#34;resources-that-helped-me:9a0c5c802295a374fed89e0c79bc5395&#34;&gt;Resources That Helped Me&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://youtu.be/xew7CMkL7jY&#34;&gt;Watch this first&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://youtu.be/2jXHxkLBOHg&#34;&gt;Watch this second&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
