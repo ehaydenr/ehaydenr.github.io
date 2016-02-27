@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Web on Eric Rosenberg</title>
-    <link>http://ehaydenr.github.io/categories/web/</link>
+    <link>http://eric-rosenberg.com/categories/web/</link>
     <description>Recent content in Web on Eric Rosenberg</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 24 Feb 2016 20:41:45 -0600</lastBuildDate>
-    <atom:link href="http://ehaydenr.github.io/categories/web/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://eric-rosenberg.com/categories/web/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Getting Set Up With Hugo</title>
-      <link>http://ehaydenr.github.io/2016/02/24/getting-set-up-with-hugo</link>
+      <link>http://eric-rosenberg.com/2016/02/24/getting-set-up-with-hugo</link>
       <pubDate>Wed, 24 Feb 2016 20:41:45 -0600</pubDate>
       
-      <guid>http://ehaydenr.github.io/2016/02/24/getting-set-up-with-hugo</guid>
+      <guid>http://eric-rosenberg.com/2016/02/24/getting-set-up-with-hugo</guid>
       <description>
 
 &lt;h1 id=&#34;motivation:32ab7241d48fcc174c877413a917f8cf&#34;&gt;Motivation&lt;/h1&gt;
