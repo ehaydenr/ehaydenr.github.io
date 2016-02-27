@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-    <title>Eric Rosenberg &middot; Eric Rosenberg</title>
+    <title>Creating a Samba Network Share on Ubuntu &middot; Eric Rosenberg</title>
     <meta name="generator" content="Hugo 0.15" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -9,9 +9,6 @@
     
       <meta name="description" content="">
     
-    
-      <link href="http://eric-rosenberg.com/index.xml" rel="alternate" type="application/rss+xml" title="Eric Rosenberg" />
-      <link href="http://eric-rosenberg.com/index.xml" rel="feed" type="application/rss+xml" title="Eric Rosenberg" />
     
     <link rel="icon" href="http://eric-rosenberg.com/favicon.ico">
     <link rel="apple-touch-icon" href="http://eric-rosenberg.com/apple-touch-icon.png" />
@@ -21,12 +18,13 @@
     <link rel="stylesheet" href="http://eric-rosenberg.com/fancybox/jquery.fancybox.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="Eric Rosenberg" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://eric-rosenberg.com/" />
+    <meta property="og:title" content="Creating a Samba Network Share on Ubuntu" />
+<meta property="og:description" content="Motivation Network storage is a great way to collaborate with people. Creating a network share will allow you to make your data available to a number of people with ease. What is Samba? Samba is an implementation of the SMB/CIFS protocol allowing Linux, OSX, and Windows to share across network storage seamlessly. Check out the organization&rsquo;s site. Also, the official Ubuntu guide is here. Setting up the Share Install First things first, let&rsquo;s get the packages we need." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://eric-rosenberg.com/2016/02/27/creating-a-samba-network-share-on-ubuntu" />
 
 
+<meta property="og:updated_time" content="2016-02-27T15:07:43-06:00"/>
 
 
 
@@ -39,18 +37,35 @@
 
     
     
-<meta itemprop="name" content="Eric Rosenberg">
-<meta itemprop="description" content="">
+<meta itemprop="name" content="Creating a Samba Network Share on Ubuntu">
+<meta itemprop="description" content="Motivation Network storage is a great way to collaborate with people. Creating a network share will allow you to make your data available to a number of people with ease. What is Samba? Samba is an implementation of the SMB/CIFS protocol allowing Linux, OSX, and Windows to share across network storage seamlessly. Check out the organization&rsquo;s site. Also, the official Ubuntu guide is here. Setting up the Share Install First things first, let&rsquo;s get the packages we need.">
 
+
+<meta itemprop="dateModified" content="2016-02-27T15:07:43-06:00" />
+<meta itemprop="wordCount" content="963">
+
+
+
+<meta itemprop="keywords" content="orchestration,web,ansible,hugo," />
 
     
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="Creating a Samba Network Share on Ubuntu"/>
+<meta name="twitter:description" content="Motivation Network storage is a great way to collaborate with people. Creating a network share will allow you to make your data available to a number of people with ease. What is Samba? Samba is an implementation of the SMB/CIFS protocol allowing Linux, OSX, and Windows to share across network storage seamlessly. Check out the organization&rsquo;s site. Also, the official Ubuntu guide is here. Setting up the Share Install First things first, let&rsquo;s get the packages we need."/>
+
+
+
 </head>
 <body>
 <div class="container">
 
 
 <div id="container">
-    <header id="header">
+	<header id="header">
   <div id="header-main" class="header-inner">
     <div class="outer">
       <a href="http://eric-rosenberg.com/" id="logo">
@@ -136,9 +151,9 @@
   </div>
 </header>
 
-
-    <div class="outer">
-    <aside id="profile">
+   	
+   	<div class="outer">
+	    <aside id="profile">
   <div class="inner profile-inner">
     <div class="base-info profile-block">
       <img id="avatar" src="http://eric-rosenberg.com/images/avatar.png">
@@ -226,25 +241,21 @@
 
 
 
-          <td><a href="http://eric-rosenberg.com/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+          <td><a href="" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
         </tr>
       </table>
     </div>
   </div>
 </aside>
 
-    <section id="main">
-    
-    
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
+	    <section id="main">
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
         <div class="article-inner">
             
-            <a href="http://eric-rosenberg.com/2016/02/27/creating-a-samba-network-share-on-ubuntu" itemprop="url">
                 
                 <img src="http://eric-rosenberg.com/banners/samba_graphic.png" class="article-banner">
                 
             
-            </a>
 
             <header class="article-header">
     <a href="http://eric-rosenberg.com/2016/02/27/creating-a-samba-network-share-on-ubuntu">
@@ -275,15 +286,187 @@
 </header>
 
             <div class="article-entry" itemprop="articleBody">
-                <p>
-                    Motivation Network storage is a great way to collaborate with people. Creating a network share will allow you to make your data available to a number of people with ease. What is Samba? Samba is an implementation of the SMB/CIFS protocol allowing Linux, OSX, and Windows to share across network storage seamlessly. Check out the organization&rsquo;s site. Also, the official Ubuntu guide is here. Setting up the Share Install First things first, let&rsquo;s get the packages we need.
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://eric-rosenberg.com/2016/02/27/creating-a-samba-network-share-on-ubuntu">
-                        Read more
-                    </a>
-                </p>
+                
+
+<h1 id="motivation:73ddb39033f1a1c99864dee46d2bfdbf">Motivation</h1>
+
+<p>Network storage is a great way to collaborate with people. Creating a network share will allow you to make your data available to a number of people with ease.</p>
+
+<h1 id="what-is-samba:73ddb39033f1a1c99864dee46d2bfdbf">What is Samba?</h1>
+
+<p>Samba is an implementation of the SMB/CIFS protocol allowing Linux, OSX, and Windows to share across network storage seamlessly. Check out the organization&rsquo;s <a href="https://www.samba.org">site</a>. Also, the official Ubuntu guide is <a href="https://help.ubuntu.com/lts/serverguide/samba-fileserver.html">here</a>.</p>
+
+<h1 id="setting-up-the-share:73ddb39033f1a1c99864dee46d2bfdbf">Setting up the Share</h1>
+
+<h2 id="install:73ddb39033f1a1c99864dee46d2bfdbf">Install</h2>
+
+<p>First things first, let&rsquo;s get the packages we need.</p>
+
+<pre><code>$ apt-get install samba
+</code></pre>
+
+<p>Your configuration file is located at <code>/etc/samba/smb.conf</code>. Feel free to peruse the configuration file. A brief explanation of some of the configuration settings that has helped me is <a href="https://www.samba.org/samba/docs/using_samba/appb.html">here</a>.</p>
+
+<h2 id="add-our-share:73ddb39033f1a1c99864dee46d2bfdbf">Add Our Share</h2>
+
+<p>At the bottom of the configuration file you will see examples of shares. There are a couple printer related shares. You can either comment those out or ignore them. Here&rsquo;s our share:</p>
+
+<pre><code>[myshare]
+  comment = Ubuntu File Server Share
+  path = /srv/samba/share
+  guest ok = yes
+  read only = no
+</code></pre>
+
+<p>Let&rsquo;s take a look at these settings. <code>[myshare]</code> is the name of the share. If we access are share located at <code>127.0.0.1</code>, we would access this share via <code>smb://127.0.0.1/myshare</code>. The <code>comment</code> is simply the description of the share. We will see this comment later. <code>path</code> is where on your machine you would like to share. Make sure you set permissions on the directory appropriately to ensure it is publicly readable and writeable. <code>guest ok</code> means exactly what you think it does: users can access the share anonymously. <code>read only = no</code> also means exactly what you think it does: users may write. Many more options are available and you should check out the samba docs to see what you need. Here is a <a href="https://www.samba.org/samba/docs/using_samba/toc.html">book</a> that&rsquo;s available has been fairly useful to me. The appendices are what I&rsquo;ve looked at the most.</p>
+
+<p>Alright, now that we&rsquo;ve updated our configuration, we need to restart our server!</p>
+
+<pre><code>$ service smbd restart
+</code></pre>
+
+<h2 id="talking-to-the-share:73ddb39033f1a1c99864dee46d2bfdbf">Talking to the Share</h2>
+
+<p>Let&rsquo;s run a command using smbclient to list the shares that the guest user has access to on localhost. Here&rsquo;s what I get on my server. You should get something similar.</p>
+
+<pre><code>$ smbclient -L localhost -U guest --no-pass
+
+Domain=[WORKGROUP] OS=[Unix] Server=[Samba 4.1.13-Ubuntu]
+
+  Sharename       Type      Comment
+  ---------       ----      -------
+  IPC$            IPC       IPC Service (network-share server (Samba, Ubuntu))
+  raw             Disk      Raw Data
+  home            Disk      Home Shares
+Domain=[WORKGROUP] OS=[Unix] Server=[Samba 4.1.13-Ubuntu]
+
+  Server               Comment
+  ---------            -------
+  NETWORK-SHARE        network-share server (Samba, Ubuntu)
+
+  Workgroup            Master
+  ---------            -------
+  WORKGROUP            NETWORK-SHARE
+</code></pre>
+
+<p>If we want to go ahead and try to access the files on our share, we can access it again with smbclient. On my machine, I will access the <code>raw</code> share. This is what you used for <code>[myshare]</code> above.</p>
+
+<pre><code>$ smbclient //localhost/raw -U guest --no-pass
+
+Domain=[WORKGROUP] OS=[Unix] Server=[Samba 4.1.13-Ubuntu]
+smb: \&gt; ls
+  .                                   D        0  Fri Feb 26 04:33:23 2016
+  ..                                  D        0  Tue Feb 23 23:04:14 2016
+  readme.txt                          A      144  Fri Feb 26 04:32:51 2016
+  data.csv                            A  1162928  Thu Feb 25 22:29:11 2016
+
+    64491 blocks of size 8388608. 61204 blocks available
+</code></pre>
+
+<p>Notice <code>smb: \&gt; ls</code>. Once I got the smb prompt, I asked it to the list the files for me. If you write <code>smb: \&gt; help</code> you get the following helpful list of available commands.</p>
+
+<pre><code>smb: \&gt; help
+  ?              allinfo        altname        archive        backup
+  blocksize      cancel         case_sensitive cd             chmod
+  chown          close          del            dir            du
+  echo           exit           get            getfacl        geteas
+  hardlink       help           history        iosize         lcd
+  link           lock           lowercase      ls             l
+  mask           md             mget           mkdir          more
+  mput           newer          notify         open           posix
+  posix_encrypt  posix_open     posix_mkdir    posix_rmdir    posix_unlink
+  print          prompt         put            pwd            q
+  queue          quit           readlink       rd             recurse
+  reget          rename         reput          rm             rmdir
+  showacls       setea          setmode        stat           symlink
+  tar            tarmode        timeout        translate      unlock
+  volume         vuid           wdel           logon          listconnect
+  showconnect    tcon           tdis           tid            logoff
+  ..             !
+</code></pre>
+
+<p>Let&rsquo;s use <code>put</code> to put a file on our server. The help entry for put can be accessed like this.</p>
+
+<pre><code>smb: \&gt; help put
+  HELP put:
+    &lt;local name&gt; [remote name] put a file
+</code></pre>
+
+<p>Let&rsquo;s add our file.</p>
+
+<pre><code>$ touch helloworld.txt
+$ smbclient //localhost/raw -U guest --no-pass
+
+Domain=[WORKGROUP] OS=[Unix] Server=[Samba 4.1.13-Ubuntu]
+smb: \&gt; put helloworld.txt helloworld.txt
+putting file helloworld.txt as \helloworld.txt (0.0 kb/s) (average 0.0 kb/s)
+smb: \&gt; ls
+  .                                   D        0  Sat Feb 27 22:59:45 2016
+  ..                                  D        0  Tue Feb 23 23:04:14 2016
+  readme.txt                          A      144  Fri Feb 26 04:32:51 2016
+  data.csv                            A  1162928  Thu Feb 25 22:29:11 2016
+  helloworld.txt                      A        0  Sat Feb 27 22:59:45 2016
+
+    64491 blocks of size 8388608. 61204 blocks available
+</code></pre>
+
+<p>Awesome. Now let&rsquo;s get rid of it.</p>
+
+<pre><code>smb: \&gt; rm helloworld.txt
+smb: \&gt; ls
+  .                                   D        0  Sat Feb 27 23:02:05 2016
+  ..                                  D        0  Tue Feb 23 23:04:14 2016
+  readme.txt                          A      144  Fri Feb 26 04:32:51 2016
+  data.csv                            A  1162928  Thu Feb 25 22:29:11 2016
+
+    64491 blocks of size 8388608. 61204 blocks available
+</code></pre>
+
+<h1 id="accessing-the-share-from-other-machines:73ddb39033f1a1c99864dee46d2bfdbf">Accessing the Share from Other Machines</h1>
+
+<p>Finding your share shouldn&rsquo;t be too difficult if you&rsquo;re on the same network as it. On linux, go to your file manager and there is most likely an option to explore your network. Click it and you should see your server. If you&rsquo;re on OSX, <code>Finder &gt; Go &gt; Connect to Server</code> will give you the following prompt.</p>
+
+
+<figure >
+    
+        <img src="/images/connect_to_server.png" />
+    
+    
+</figure>
+
+
+<h2 id="important-note:73ddb39033f1a1c99864dee46d2bfdbf">Important Note</h2>
+
+<p>If your server is on the same network as you, you should be fine. If it is on another network, you will likely need to jump through a couple more hoops to connect to it. DO NOT open up your share to the rest of the world if you do not have proper security configured. The samba share described in this post does not have ANY security. Don&rsquo;t bypass your firewall and forward ports to access this share unless you know what you&rsquo;re doing.</p>
+
+<h1 id="cheat-sheet:73ddb39033f1a1c99864dee46d2bfdbf">Cheat Sheet</h1>
+
+<table>
+<thead>
+<tr>
+<th>Objective</th>
+<th>Command</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Restart Server</td>
+<td><code>service smbd restart</code></td>
+</tr>
+
+<tr>
+<td>List Shares</td>
+<td><code>smbclient -L &lt;machine-ip&gt; -U &lt;user&gt;</code></td>
+</tr>
+
+<tr>
+<td>Access Share</td>
+<td><code>smbclient //&lt;machine-ip&gt; -U &lt;user&gt;</code></td>
+</tr>
+</tbody>
+</table>
+
             </div>
             <footer class="article-footer">
     <a data-url="http://eric-rosenberg.com/2016/02/27/creating-a-samba-network-share-on-ubuntu" data-id="73ddb39033f1a1c99864dee46d2bfdbf" class="article-share-link">
@@ -293,251 +476,32 @@
 </footer>
 
         </div>
-    </article>
+
+        
+<nav id="article-nav">
     
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            
-            <a href="http://eric-rosenberg.com/2016/02/26/intro-to-ansible-playbook" itemprop="url">
-                
-                <img src="http://eric-rosenberg.com/banners/ansible-playbook.jpg" class="article-banner">
-                
-            
-            </a>
-
-            <header class="article-header">
-    <a href="http://eric-rosenberg.com/2016/02/26/intro-to-ansible-playbook">
-    <h1 class="article-title" itemprop="name">
-        Intro to Ansible Playbook
-    </h1>
-    </a>
-    <div class="article-meta">
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2016-02-26 17:18:47 -0600 CST" itemprop="datePublished">2016-02-26</time>
-            &middot;
-            504
-            words
-            &middot;
-            3
-            minute read
-        </div>
-
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                <a class="article-category-link" href="http://eric-rosenberg.com/categories/orchestration">Orchestration</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                <a class="article-category-link" href="http://eric-rosenberg.com/tags/ansible">Ansible</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    Image From: DigitalOcean Before we get started, if you haven&rsquo;t already, check out Intro to Ansible. Motivation Inlining Ansible commands on the CLI is a pain. Also, what if we want to do a bunch of commands at once? Ansible&rsquo;s solution is playbook. Welcome to the world of playbooks Playbook is essential to achieving a good administration workflow. If you&rsquo;re inlining a lot on the command line, you&rsquo;re doing too much work; let playbook do the work for you.
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://eric-rosenberg.com/2016/02/26/intro-to-ansible-playbook">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="http://eric-rosenberg.com/2016/02/26/intro-to-ansible-playbook" data-id="7cdcc31366b6fd56a03b23195d6488f2" class="article-share-link">
-        Share
+    <a href="http://eric-rosenberg.com/2016/02/26/intro-to-ansible-playbook" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">Intro to Ansible Playbook</div>
     </a>
     
-</footer>
 
-        </div>
-    </article>
     
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            
-            <a href="http://eric-rosenberg.com/2016/02/25/intro-to-ansible" itemprop="url">
-                
-                <img src="http://eric-rosenberg.com/banners/ansible-logo.png" class="article-banner">
-                
-            
-            </a>
-
-            <header class="article-header">
-    <a href="http://eric-rosenberg.com/2016/02/25/intro-to-ansible">
-    <h1 class="article-title" itemprop="name">
-        Intro to Ansible
-    </h1>
-    </a>
-    <div class="article-meta">
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2016-02-25 17:32:58 -0600 CST" itemprop="datePublished">2016-02-25</time>
-            &middot;
-            761
-            words
-            &middot;
-            4
-            minute read
-        </div>
-
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                <a class="article-category-link" href="http://eric-rosenberg.com/categories/orchestration">Orchestration</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                <a class="article-category-link" href="http://eric-rosenberg.com/tags/ansible">Ansible</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    Motivation Managing a one or two machines is a fairly easy task. Installing software, managing users, mounting network drives, etc. can be done by manually spawning a shell to each machine and running whatever commands we need to on each machine individually. While it doesn&rsquo;t seem too bad for a couple machines, what if we want to manage many machines? If I have to gather information about all 1000 of my machines, I don&rsquo;t want to have to manually spawn a shell in each.
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://eric-rosenberg.com/2016/02/25/intro-to-ansible">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="http://eric-rosenberg.com/2016/02/25/intro-to-ansible" data-id="9a0c5c802295a374fed89e0c79bc5395" class="article-share-link">
-        Share
-    </a>
-    
-</footer>
-
-        </div>
-    </article>
-    
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            
-            <a href="http://eric-rosenberg.com/2016/02/24/getting-set-up-with-hugo" itemprop="url">
-                
-                <img src="http://eric-rosenberg.com/banners/desk.jpg" class="article-banner">
-                
-            
-            </a>
-
-            <header class="article-header">
-    <a href="http://eric-rosenberg.com/2016/02/24/getting-set-up-with-hugo">
-    <h1 class="article-title" itemprop="name">
-        Getting Set Up With Hugo
-    </h1>
-    </a>
-    <div class="article-meta">
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2016-02-24 20:41:45 -0600 CST" itemprop="datePublished">2016-02-24</time>
-            &middot;
-            198
-            words
-            &middot;
-            1
-            minute read
-        </div>
-
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                <a class="article-category-link" href="http://eric-rosenberg.com/categories/web">Web</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                <a class="article-category-link" href="http://eric-rosenberg.com/tags/hugo">Hugo</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    Motivation There are certain instances where statically generating your website is a great idea. There are tools out there like WordPress, Drupal, and Joomla that provide much functionality that can be overkill. The difference between Hugo and these Content Management Systems (CMS) is static vs. dynamic content delivery. While it does have its restrictions, static site delivery has some pretty great performance benefits. If the server doesn&rsquo;t have to query a database and build the page, it will deliver the user content much quicker.
-                    <br>
-                </p>
-                <p class="article-more-link">
-                    <a href="http://eric-rosenberg.com/2016/02/24/getting-set-up-with-hugo">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="http://eric-rosenberg.com/2016/02/24/getting-set-up-with-hugo" data-id="32ab7241d48fcc174c877413a917f8cf" class="article-share-link">
-        Share
-    </a>
-    
-</footer>
-
-        </div>
-    </article>
-    
-
-    <nav id="page-nav">
-
 </nav>
+
+
+    </article>
+    <section id="comments">
+        <div id="disqus_thread">
+            
+        </div>
+    </section>
 
 </section>
 
-
-    <aside id="sidebar">
+	    <aside id="sidebar">
     
 <div class="widget-wrap">
     <h3 class="widget-title">
@@ -551,7 +515,7 @@
                     <a href="http://eric-rosenberg.com/2016/02/27/creating-a-samba-network-share-on-ubuntu" class="thumbnail">
                     
                         
-                        <span style="background-image:url(http://eric-rosenberg.com/banners/samba_graphic.png)" alt="Eric Rosenberg" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://eric-rosenberg.com/banners/samba_graphic.png)" alt="Creating a Samba Network Share on Ubuntu" class="thumbnail-image"></span>
                         
                     
                     </a>
@@ -570,7 +534,7 @@
                     <a href="http://eric-rosenberg.com/2016/02/26/intro-to-ansible-playbook" class="thumbnail">
                     
                         
-                        <span style="background-image:url(http://eric-rosenberg.com/banners/ansible-playbook.jpg)" alt="Eric Rosenberg" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://eric-rosenberg.com/banners/ansible-playbook.jpg)" alt="Creating a Samba Network Share on Ubuntu" class="thumbnail-image"></span>
                         
                     
                     </a>
@@ -595,7 +559,7 @@
                     <a href="http://eric-rosenberg.com/2016/02/25/intro-to-ansible" class="thumbnail">
                     
                         
-                        <span style="background-image:url(http://eric-rosenberg.com/banners/ansible-logo.png)" alt="Eric Rosenberg" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://eric-rosenberg.com/banners/ansible-logo.png)" alt="Creating a Samba Network Share on Ubuntu" class="thumbnail-image"></span>
                         
                     
                     </a>
@@ -620,7 +584,7 @@
                     <a href="http://eric-rosenberg.com/2016/02/24/getting-set-up-with-hugo" class="thumbnail">
                     
                         
-                        <span style="background-image:url(http://eric-rosenberg.com/banners/desk.jpg)" alt="Eric Rosenberg" class="thumbnail-image"></span>
+                        <span style="background-image:url(http://eric-rosenberg.com/banners/desk.jpg)" alt="Creating a Samba Network Share on Ubuntu" class="thumbnail-image"></span>
                         
                     
                     </a>
@@ -725,7 +689,7 @@
     <div id="toTop" class="fa fa-chevron-up"></div>
 </aside>
 
-    </div>
+	</div>
 </div>
 
 <footer id="footer">

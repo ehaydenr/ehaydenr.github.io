@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://eric-rosenberg.com/</loc>
-    <lastmod>2016-02-26T17:18:47-06:00</lastmod>
+    <lastmod>2016-02-27T15:07:43-06:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://eric-rosenberg.com/2016/02/27/creating-a-samba-network-share-on-ubuntu</loc>
+    <lastmod>2016-02-27T15:07:43-06:00</lastmod>
   </url>
   
   <url>
