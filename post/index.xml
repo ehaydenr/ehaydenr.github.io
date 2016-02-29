@@ -6,8 +6,120 @@
     <description>Recent content in Posts on Eric Rosenberg</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 Feb 2016 15:07:43 -0600</lastBuildDate>
+    <lastBuildDate>Sun, 28 Feb 2016 17:04:44 -0600</lastBuildDate>
     <atom:link href="http://eric-rosenberg.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Accessing Ubuntu with Xrdp</title>
+      <link>http://eric-rosenberg.com/2016/02/28/accessing-ubuntu-with-xrdp</link>
+      <pubDate>Sun, 28 Feb 2016 17:04:44 -0600</pubDate>
+      
+      <guid>http://eric-rosenberg.com/2016/02/28/accessing-ubuntu-with-xrdp</guid>
+      <description>
+
+&lt;h1 id=&#34;motivation:7f06a4720a6fc18309ea0f74c92d2933&#34;&gt;Motivation&lt;/h1&gt;
+
+&lt;p&gt;RDP stands for Remote Desktop Protocol - a protocol developed by Microsoft. The protocol was built to allow users to gain graphical access to remote machines. Xrdp is an implementation of this protocol and can be used to access remote linux machines.&lt;/p&gt;
+
+&lt;h1 id=&#34;quick-note:7f06a4720a6fc18309ea0f74c92d2933&#34;&gt;Quick Note&lt;/h1&gt;
+
+&lt;p&gt;I have only been able to get Xrdp to work while using the Xfce desktop environment.&lt;/p&gt;
+
+&lt;h1 id=&#34;install:7f06a4720a6fc18309ea0f74c92d2933&#34;&gt;Install&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;$ apt-get install xrdp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Wow we&amp;rsquo;re done! Ok, let&amp;rsquo;s see if we can access it.&lt;/p&gt;
+
+&lt;h1 id=&#34;access:7f06a4720a6fc18309ea0f74c92d2933&#34;&gt;Access&lt;/h1&gt;
+
+&lt;p&gt;Installing xrdp is a piece of cake. Accessing your server may or may not be easy.&lt;/p&gt;
+
+&lt;h2 id=&#34;my-server-is-on-my-home-network:7f06a4720a6fc18309ea0f74c92d2933&#34;&gt;My server is on my home network&lt;/h2&gt;
+
+&lt;p&gt;With the server on your home network, you should be able to easily access it with remote desktop by just supplying it&amp;rsquo;s IP address on your LAN. If you still can&amp;rsquo;t access it, make sure port 3389 is open on the server. You can check which ports are listening on your machine with the &lt;code&gt;netstat&lt;/code&gt; utility. Also, make sure the server is on! &lt;code&gt;service xrdp start&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;my-server-is-in-my-vpn:7f06a4720a6fc18309ea0f74c92d2933&#34;&gt;My server is in my VPN&lt;/h2&gt;
+
+&lt;p&gt;You may have lucked out and the directions are exactly those specified above for home networks. Connect to your VPN and try to access it. If you still can&amp;rsquo;t access it, keep reading.&lt;/p&gt;
+
+&lt;h2 id=&#34;my-server-is-somewhere-that-i-can-ssh:7f06a4720a6fc18309ea0f74c92d2933&#34;&gt;My server is somewhere that I can SSH&lt;/h2&gt;
+
+&lt;p&gt;If you can SSH into the machine, that&amp;rsquo;s all you need to view your remote machine over RDP. This is all possible thanks to SSH tunnels.&lt;/p&gt;
+
+&lt;h2 id=&#34;osx:7f06a4720a6fc18309ea0f74c92d2933&#34;&gt;OSX&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ssh -L 3389:localhost:3389 user@remote_machine
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Load up remote desktop and access your machine at &lt;code&gt;localhost:3389&lt;/code&gt;. If you are using Microsoft Remote Desktop, &lt;code&gt;3389&lt;/code&gt; is the default port and you can just use &lt;code&gt;localhost&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;windows:7f06a4720a6fc18309ea0f74c92d2933&#34;&gt;Windows&lt;/h2&gt;
+
+&lt;p&gt;We can use &lt;a href=&#34;http://www.putty.org&#34;&gt;PuTTY&lt;/a&gt; to tunnel.&lt;/p&gt;
+
+&lt;h3 id=&#34;converting-to-ppk:7f06a4720a6fc18309ea0f74c92d2933&#34;&gt;Converting to .ppk&lt;/h3&gt;
+
+&lt;p&gt;If you have a private key to access the machine, you will need to convert it with &lt;a href=&#34;http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html&#34;&gt;PuTTYgen&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Open up PuTTYgen and click &lt;strong&gt;Load&lt;/strong&gt;. Find your private key on your system and load it on in.
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://eric-rosenberg.com/images/puttygen_load.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Go ahead and &lt;strong&gt;Save private key&lt;/strong&gt;. The new extension is &lt;code&gt;.ppk&lt;/code&gt;.
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://eric-rosenberg.com/images/puttygen_save.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&#34;setting-up-putty-session:7f06a4720a6fc18309ea0f74c92d2933&#34;&gt;Setting up PuTTY Session&lt;/h3&gt;
+
+&lt;p&gt;There are several settings in your session that you will need to fill out. Here&amp;rsquo;s the starting prompt. You will need to put in the IP of the machine you want to connect to.
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://eric-rosenberg.com/images/putty_prompt.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s put your SSH key in if you have one. Hit browse and find the &lt;code&gt;.ppk&lt;/code&gt;.
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://eric-rosenberg.com/images/putty_key.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Last but not least, we will need to make sure we tunnel RDP! In &lt;strong&gt;Source port&lt;/strong&gt; put &lt;code&gt;3400&lt;/code&gt; and &lt;strong&gt;Destination&lt;/strong&gt; put &lt;code&gt;localhost:3389&lt;/code&gt;. Click &lt;strong&gt;Add&lt;/strong&gt;.
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://eric-rosenberg.com/images/putty_tunnel.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&#34;fire-up-remote-desktop-connection:7f06a4720a6fc18309ea0f74c92d2933&#34;&gt;Fire up Remote Desktop Connection&lt;/h3&gt;
+
+&lt;p&gt;Go ahead and start RDC and connect to &lt;code&gt;localhost:3400&lt;/code&gt;. When asked for your username, use the one on the machine you&amp;rsquo;re connecting to. You&amp;rsquo;re done!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Creating a Samba Network Share on Ubuntu</title>
